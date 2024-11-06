@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/detail_screen.dart';
-import 'package:flutter_application_1/data/candi_data.dart';
+import 'package:wisatacandi/data/candi_data.dart';
+import 'package:wisatacandi/screen/detail_screen.dart';
+import 'package:wisatacandi/screen/profile_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -15,10 +17,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Wisata Candi',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.deepPurple),
+          titleTextStyle: TextStyle(
+            color: Colors.deepPurple,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(
+          primary: Colors.deepPurple,
+          surface: Colors.deepPurple[50],
+        ),
         useMaterial3: true,
       ),
-      home: DetailScreen(candi: candiList[0]),
+      // home: ProfileScreen(),
+      // home: DetailScreen(candi: candiList[0]),
+      // home: SignInScreen(),
+      home : const ProfileScreen()
     );
   }
 }
