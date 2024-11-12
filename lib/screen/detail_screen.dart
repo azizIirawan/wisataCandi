@@ -200,7 +200,15 @@ class DetailScreen extends StatelessWidget {
                                   )),
                             ),
                           );
-                        }),
+                        },
+                        ),
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  const Text(
+                    'Tap untuk memperbesar',
+                    style: TextStyle(fontSize: 12, color: Colors.black54),
                   ),
                 ],
               ),
@@ -209,7 +217,5 @@ class DetailScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-  
-  CachedNetworkImage({required String imageUrl, required int width, required int height, required BoxFit fit, required Container Function(dynamic context, dynamic url) placeholder, required Icon Function(dynamic context, dynamic url, dynamic Error) errorWidget}) {}
+  } 
 }
