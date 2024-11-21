@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wisatacandi/widgets/profile_item_info.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -13,21 +14,22 @@ class _ProfileScreen extends State<ProfileScreen> {
   String fullName = 'aziz';
   String userName = 'aziz irawan';
   int favoriteCandiCount = 0;
+  late Color iconColor;
 
   // TODO : 5 Implementasu Fungsi SignIn
   void signIn() {
-    setState(() {
-      this.isSigndIn = !this.isSigndIn;
-    });
+    // setState(() {
+    //   this.isSigndIn = !this.isSigndIn;
+    // });
+    Navigator.pushNamed(context, '/signin');
   }
 
 // TODO : 6 Implementasu Fungsi SignIn
-void signOut() {
+  void signOut() {
     setState(() {
       isSigndIn = !isSigndIn;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -43,45 +45,47 @@ void signOut() {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 200 - 50),
-              child: Column(
-                children : [
-                  Stack(
-                alignment: Alignment.bottomRight,
-                children: [
-                  // TODO: 2. Buat bagaian profile header yang berisi gambar profile
-                  //Stack(
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.deepPurple, width: 2,),
-                      shape: BoxShape.circle
-                    ),
-                    child: const CircleAvatar(
-                      radius: 50,
-                      backgroundImage:
-                          AssetImage('images/placeholder_image.png'),
-                    ),
-                  ),
-                  if (isSigndIn)
-                    IconButton(
-                        onPressed: null,
-                        icon: Icon(
-                          Icons.camera_alt,
-                          color: Colors.deepPurple[50],
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 200 - 50),
+                    child: Column(
+                      children: [
+                        Stack(
+                          alignment: Alignment.bottomRight,
+                          children: [
+                            // TODO: 2. Buat bagaian profile header yang berisi gambar profile
+                            //Stack(
+                            Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.deepPurple,
+                                    width: 2,
+                                  ),
+                                  shape: BoxShape.circle),
+                              child: const CircleAvatar(
+                                radius: 50,
+                                backgroundImage:
+                                    AssetImage('images/placeholder_image.png'),
+                              ),
+                            ),
+                            if (isSigndIn)
+                              IconButton(
+                                onPressed: null,
+                                icon: Icon(
+                                  Icons.camera_alt,
+                                  color: Colors.deepPurple[50],
+                                ),
+                              )
+                          ],
                         ),
-                      )
-                    ],
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
-          ),
-              //   TODO: 3.  buat bagaian profile yang berisi info profile
+                ),
+                //   TODO: 3.  buat bagaian profile yang berisi info profile
 
-              //   Todo : 4. Buat ProfileActions yang berisi text button sign in/out
+                //   Todo : 4. Buat ProfileActions yang berisi text button sign in/out
                 const SizedBox(
                   height: 20,
                 ),
@@ -174,8 +178,10 @@ void signOut() {
                   height: 20,
                 ),
                 isSigndIn
-                    ? TextButton(onPressed: signOut, child: const Text("Sign Out"))
-                    : TextButton(onPressed: signIn, child: const Text("Sign In"))
+                    ? TextButton(
+                        onPressed: signOut, child: const Text("Sign Out"))
+                    : TextButton(
+                        onPressed: signIn, child: const Text("Sign In"))
               ],
             ),
           )

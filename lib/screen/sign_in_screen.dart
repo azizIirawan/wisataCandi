@@ -81,17 +81,21 @@ class _SignInScreen extends State<SignInScreen> {
                   text: TextSpan(
                     text: 'Belum Punya Akun? ',
                     style: const TextStyle(
+                      fontSize: 16,
                       color: Colors.deepPurple,
                     ),
                     children: <TextSpan>[
                       TextSpan(
-                        text: 'Sign Up',
+                        text: 'Daftar disini',
                         style: const TextStyle(
                           color: Colors.blue,
                           decoration: TextDecoration.underline,
                           fontSize: 16,
                         ),
-                        recognizer: TapGestureRecognizer()..onTap = () {},
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.pushNamed(context, '/signup');
+                          },
                       ),
                     ],
                   ),
