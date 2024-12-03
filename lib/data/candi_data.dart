@@ -1,6 +1,5 @@
 import 'package:wisatacandi/models/candi.dart';
 
-
 var candiList = [
   Candi(
     name: 'Candi Borobudur',

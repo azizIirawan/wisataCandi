@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:wisatacandi/models/candi.dart';
 import 'package:wisatacandi/screen/detail_screen.dart';
-import '../models/candi.dart';
-
 
 class ItemCard extends StatelessWidget {
-  // TODO: 1. Deklarasi variabel yang dibutuhkan dan pasang pada konstruktor
   final Candi candi;
-
   const ItemCard({super.key, required this.candi});
 
   @override
   Widget build(BuildContext context) {
-    // TODO: 6. Implementasi routing ke DetailScreen
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
@@ -22,18 +18,15 @@ class ItemCard extends StatelessWidget {
         );
       },
       child: Card(
-        // TODO: 2. Tetapkan parameter shape, margin, dan elevation
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        margin: EdgeInsets.all(4),
+        margin: const EdgeInsets.all(8),
         elevation: 1,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // TODO: 3. Buat Image sebagai anak dari Column
             Expanded(
-              // TODO :  7. implementasi hero animation
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Image.asset(
@@ -43,9 +36,8 @@ class ItemCard extends StatelessWidget {
                 ),
               ),
             ),
-            // TODO: 4. Buat Text sebagai anak dari Column
             Padding(
-              padding: const EdgeInsets.only(left: 16, top: 8),
+              padding: const EdgeInsets.only(left: 16, top: 8, right: 16),
               child: Text(
                 candi.name,
                 style: const TextStyle(
@@ -54,13 +46,13 @@ class ItemCard extends StatelessWidget {
                 ),
               ),
             ),
-            // TODO: 5. Buat Text sebagai anak dari Column
             Padding(
               padding: const EdgeInsets.only(left: 16, bottom: 8),
               child: Text(
                 candi.type,
                 style: const TextStyle(
                   fontSize: 12,
+                  color: Colors.grey,
                 ),
               ),
             ),

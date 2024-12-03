@@ -5,169 +5,167 @@ class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreen();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreen extends State<ProfileScreen> {
-  //TODO: 1. Deklarasiakan variabel yang dibutuhkan
-  bool isSigndIn = true;
-  String fullName = 'aziz';
-  String userName = 'aziz irawan';
+class _ProfileScreenState extends State<ProfileScreen> {
+  // TODO: 1. Deklarasikan variable yang dibutuhkan
+  bool isSignedIn = true;
+  String fullName = 'aziz irawan';
+  String userName = 'aziz';
   int favoriteCandiCount = 0;
   late Color iconColor;
 
-  // TODO : 5 Implementasu Fungsi SignIn
-  void signIn() {
+  //TODO: 5. Implementasi Fungsi Sign In
+  void signIn(){
     // setState(() {
-    //   this.isSigndIn = !this.isSigndIn;
+    // isSignedIn = !isSignedIn;
     // });
     Navigator.pushNamed(context, '/signin');
   }
+  //TODO: 6. Implementasi Fungsi Sign Out
 
-// TODO : 6 Implementasu Fungsi SignIn
-  void signOut() {
-    setState(() {
-      isSigndIn = !isSigndIn;
-    });
+  void signOut(){
+   setState(() {
+     isSignedIn = !isSignedIn;
+   });
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           Container(
-            height: 200,
-            width: double.infinity,
-            color: Colors.deepPurple,
+            height: 200, width: double.infinity, color: Colors.deepPurple,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
+                //TODO: 2. Buat bagian Profile Header yang berisi gambar profile
                 Align(
                   alignment: Alignment.topCenter,
                   child: Padding(
                     padding: const EdgeInsets.only(top: 200 - 50),
-                    child: Column(
+                    child: Stack(
+                      alignment: Alignment.bottomRight,
                       children: [
-                        Stack(
-                          alignment: Alignment.bottomRight,
-                          children: [
-                            // TODO: 2. Buat bagaian profile header yang berisi gambar profile
-                            //Stack(
-                            Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.deepPurple,
-                                    width: 2,
-                                  ),
-                                  shape: BoxShape.circle),
-                              child: const CircleAvatar(
-                                radius: 50,
-                                backgroundImage:
-                                    AssetImage('images/placeholder_image.png'),
-                              ),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.deepPurple,
+                              width: 2,
                             ),
-                            if (isSigndIn)
-                              IconButton(
-                                onPressed: null,
-                                icon: Icon(
-                                  Icons.camera_alt,
-                                  color: Colors.deepPurple[50],
-                                ),
-                              )
-                          ],
+                            shape: BoxShape.circle,
+                          ),
+                          child: const CircleAvatar(
+                            radius: 50,
+                            backgroundImage: AssetImage('images/placeholder_image.png'),
+                          ),
                         ),
+                        if(isSignedIn) 
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.camera_alt,
+                              color: Colors.deepPurple[50],
+                            ),
+                          ),
                       ],
                     ),
                   ),
                 ),
-                //   TODO: 3.  buat bagaian profile yang berisi info profile
-
-                //   Todo : 4. Buat ProfileActions yang berisi text button sign in/out
-                const SizedBox(
-                  height: 20,
-                ),
-                Divider(
-                  color: Colors.deepPurple[200],
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
+                //TODO: 3. Buat bagian ProfileInfo yang berisi infor Profile
+                const SizedBox(height: 20,),
+                Divider(color: Colors.deepPurple[100],),
+                const SizedBox(height: 4,),
                 Row(
                   children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 3,
-                      child: const Row(
-                        children: [
-                          Icon(
-                            Icons.lock,
-                            color: Colors.amber,
+                    SizedBox(width: MediaQuery
+                    .of(context)
+                    .size
+                    .width/3,
+                    child:  const Row(
+                      children: [
+                        Icon(
+                          Icons.lock,
+                          color: Colors.amber,
                           ),
-                          SizedBox(
-                            width: 8,
+                        SizedBox(
+                          width: 8,
                           ),
                           Text(
-                            "Pengguna",
+                            'Pengguna',
                             style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
-                        ],
-                      ),
+                              fontSize: 18, fontWeight: FontWeight.bold,),
+                          ),
+                      ],
                     ),
-                    Expanded(
-                        child: Text(
-                      ": $userName",
+                  ),
+                  Expanded(
+                    child: Text(
+                      ': $userName',
                       style: const TextStyle(fontSize: 18),
-                    ))
-                  ],
+                    ),
+                  )
+                ],
                 ),
-                const SizedBox(
-                  height: 4,
-                ),
-                Divider(
-                  color: Colors.deepPurple[100],
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
+               const SizedBox(height: 4,),
+                Divider(color: Colors.deepPurple[100],),
+                SizedBox(height: 14,),
                 // Row(
                 //   children: [
-                //     SizedBox(width: MediaQuery.of(context).size.width / 3,
-                //       child: Row(
-                //         children: [
-                //           Icon(Icons.person, color: Colors.blue
-                //             ,),
-                //           SizedBox(width: 8,),
-                //           Text('Nama', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                //     SizedBox(width: MediaQuery.of(context).size.width/3,
+                //     child: Row(
+                //       children: [
+                //         Icon(Icons.person, color: Colors.blue,),
+                //         SizedBox(
+                //           width: 8,
+                //           ),
+                //         Text(
+                //           'Nama',
+                //           style: TextStyle(
+                //             fontSize: 18, fontWeight: FontWeight.bold,),
+                //           ),
                 //         ],
+                //       )
+                //     ),
+                //     Expanded(
+                //       child: Text(
+                //         ': $fullName',
+                //         style: const TextStyle(fontSize: 18),
                 //       ),
                 //     ),
-                //     Expanded(child: Text(': $fullName', style: TextStyle(fontSize: 18),)),
-                //     if(isSigned) const Icon(Icons.edit),
+                //     if(isSignedIn) const Icon(Icons.edit),
                 //   ],
                 // ),
+
                 ProfileItemInfo(
-                    icon: Icons.person,
-                    label: 'Name',
-                    value: fullName,
-                    iconColor: Colors.blue),
-                Divider(
-                  color: Colors.deepPurple[100],
+                icon: Icons.person, 
+                label: 'Name', 
+                value: fullName, 
+                iconColor: Colors.blue,
+                showEditIcon: isSignedIn,
+                onEditPressed: (){
+                  debugPrint('icon Edit Ditekan');
+                },
                 ),
                 const SizedBox(
                   height: 4,
                 ),
+                Divider(
+                color: Colors.deepPurple[100],
+                ),
+               const SizedBox(
+                height: 4,
+                ),
                 ProfileItemInfo(
-                    icon: Icons.favorite,
-                    label: 'Favorit',
-                    value: this.favoriteCandiCount > 0
-                        ? "$favoriteCandiCount"
-                        : "0",
-                    iconColor: Colors.red),
+                icon: Icons.favorite, 
+                label: 'Favorite', 
+                value: favoriteCandiCount > 0 ? '$favoriteCandiCount' : '', 
+                iconColor: Colors.red),
+                //TODO: 4. Buat bagian ProfileActions yang berisi TextButton sign in/out
                 const SizedBox(
                   height: 4,
                 ),
@@ -177,11 +175,11 @@ class _ProfileScreen extends State<ProfileScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                isSigndIn
+                isSignedIn
                     ? TextButton(
-                        onPressed: signOut, child: const Text("Sign Out"))
+                      onPressed: signOut, child: const Text('Sign Out'))
                     : TextButton(
-                        onPressed: signIn, child: const Text("Sign In"))
+                      onPressed: signIn, child: const Text('Sign In'))
               ],
             ),
           )
