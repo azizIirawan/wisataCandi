@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -8,6 +9,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignInScreen extends State<SignUpScreen> {
 // TODO: 1.Deklarasi variabel
+final SharedPreferences prefs = await SharedPreferences.getInstance();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
